@@ -1,5 +1,6 @@
 package reader;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class DataFileReader {
         try {
             reader = new Scanner(new File("Graph Data/" + filename));
         } catch (FileNotFoundException exception) {
+            JOptionPane.showMessageDialog(null, "File Not Found");
             System.out.println("\nFile Not Found");
         }
 

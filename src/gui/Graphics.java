@@ -15,7 +15,13 @@ public class Graphics {
     private final Color lightOlive = new Color(231, 232, 209);
     private final Color lightTeal = new Color(167, 190, 174);
 
-    //--------------------------< Import Panel Components >---------------
+    //---------------------------------------------< Homepage Component >-----------------------------------------------
+    public void setMessageFormat(JLabel label) {
+        label.setFont(new Font("Monospaced", Font.PLAIN, 18));
+        label.setForeground(scarlet);
+    }
+
+    //-------------------------------------------< Import Panel Components >--------------------------------------------
     public void setImportTextField(JTextField textField) {
         textField.setFont(new Font("Monospaced", Font.PLAIN, 18));
         textField.setHorizontalAlignment(SwingConstants.CENTER);
