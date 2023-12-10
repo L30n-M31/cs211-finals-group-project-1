@@ -3,14 +3,29 @@ package graph;
 import java.text.DecimalFormat;
 import java.util.*;
 
+/**
+ * Handles various graph traversal operations such as Breadth-First Search (BFS),
+ * Depth-First Search (DFS), and finding the shortest path between two vertices.
+ */
 public class GraphTraversal {
     private final List<Vertex> vertexList;
     private StringBuilder shortestPathVertices;
 
+    /**
+     * Constructs a new instance of GraphTraversal with the specified graph.
+     *
+     * @param graph The graph to perform traversal operations on.
+     */
     public GraphTraversal(Graph graph) {
         vertexList = graph.getVertexList();
     } // end of constructor
 
+    /**
+     * Performs Breadth-First Search (BFS) traversal starting from the vertex with the given identifier.
+     *
+     * @param id The identifier of the starting vertex.
+     * @return A string representation of the BFS traversal.
+     */
     public String BFSTraversal(int id) {
         StringBuilder result = new StringBuilder();
 
@@ -37,6 +52,12 @@ public class GraphTraversal {
         return result.toString();
     } // end of BFSTraversal
 
+    /**
+     * Performs Depth-First Search (DFS) traversal starting from the vertex with the given identifier.
+     *
+     * @param id The identifier of the starting vertex.
+     * @return A string representation of the DFS traversal.
+     */
     public String DFSTraversal(int id) {
         StringBuilder result = new StringBuilder();
 
@@ -65,6 +86,13 @@ public class GraphTraversal {
         return result.toString();
     } // end of DFSTraversal
 
+    /**
+     * Finds the shortest path from a source vertex to a destination vertex using Dijkstra's algorithm.
+     *
+     * @param sourceId      The identifier of the starting vertex
+     * @param destinationId The identifier of the destination vertex
+     * @return A string representation of the shortest path length, or a message indicating that no path exists
+     */
     public String shortestPath(int sourceId, int destinationId) {
         Vertex root = getVertex(sourceId);
         Vertex destination = getVertex(destinationId);
@@ -107,6 +135,12 @@ public class GraphTraversal {
         return "There is no path from " + sourceId + " to " + destinationId;
     } // end of shortestPath
 
+    /**
+     * Constructs the vertices of the shortest path from a destination vertex to the source vertex.
+     *
+     * @param previousVertexMap A map of vertices to their predecessors in the shortest path.
+     * @param destination       The destination vertex.
+     */
     public void constructShortestPath(Map<Vertex, Vertex> previousVertexMap, Vertex destination) {
         Vertex current = destination;
 
@@ -116,6 +150,12 @@ public class GraphTraversal {
         }
     } // end of constructShortestPath
 
+    /**
+     * Retrieves a vertex with the specified identifier from the list of vertices.
+     *
+     * @param id The identifier of the vertex to be retrieved.
+     * @return The vertex with the specified identifier, or null if not found.
+     */
     public Vertex getVertex(int id) {
         return vertexList.stream()
                 .filter(vertex -> vertex.getId() == id)
@@ -123,6 +163,11 @@ public class GraphTraversal {
                 .orElse(null);
     } // end of getVertex
 
+    /**
+     * Gets the vertices of the shortest path as a string.
+     *
+     * @return A string representation of the vertices of the shortest path.
+     */
     public String getShortestPathVertices() {
         return shortestPathVertices.toString();
     } // end of getShortestPathVertices

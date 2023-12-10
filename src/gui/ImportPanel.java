@@ -16,6 +16,7 @@ public class ImportPanel extends JPanel {
     private JButton importBT;
     private boolean graphLoaded;
     private GraphCreation graph;
+    private GraphPanel graphPanel;
 
     public ImportPanel(GUI gui) {
         graphLoaded = false;
@@ -41,7 +42,12 @@ public class ImportPanel extends JPanel {
 
             if (!filenameTF.getText().equals("Enter Filename")) {
                 graph.createGraph(filenameTF.getText());
-                GraphPanel graphPanel = new GraphPanel(graph.getGraph().getVertexList());
+
+                if (graphPanel != null) {
+                    gui.getContentPane().remove(graphPanel);
+                }
+
+                graphPanel = new GraphPanel(graph.getGraph().getVertexList());
                 gui.getContentPane().add(graphPanel, BorderLayout.EAST);
 
                 gui.revalidate();

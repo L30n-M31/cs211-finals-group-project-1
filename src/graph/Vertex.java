@@ -3,14 +3,28 @@ package graph;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a vertex in a graph with a unique identifier and an adjacency list containing edges connected
+ * to this vertex.
+ */
 public class Vertex {
     private final int id;
     private final List<Edge> adjacencyList = new ArrayList<>();
 
+    /**
+     * Constructs a new instance of Vertex with the specified identifier.
+     *
+     * @param id The unique identifier of the vertex.
+     */
     public Vertex(int id) {
         this.id = id;
     } // end of constructor
 
+    /**
+     * Adds an edge to the adjacency list of this vertex, preventing duplicate entries.
+     *
+     * @param edge The edge to be added to the adjacency list.
+     */
     public void addEdge(Edge edge) {
         if (!adjacencyList.contains(edge)) {
             System.out.println("Added " + edge + " to the adjacency list");
@@ -20,19 +34,40 @@ public class Vertex {
         }
     } // end of addEdge
 
+    /**
+     * Gets the unique identifier of the vertex.
+     *
+     * @return The identifier of the vertex.
+     */
     public int getId() {
         return id;
     } // end of getId
 
+    /**
+     * Gets the adjacency list of edges connected to this vertex.
+     *
+     * @return The adjacency list of edges.
+     */
     public List<Edge> getAdjacencyList() {
         return adjacencyList;
     } // end of getAdjacencyList
 
+    /**
+     * Returns a string representation of the vertex using its unique identifier.
+     *
+     * @return The string representation of the vertex.
+     */
     @Override
     public String toString() {
         return  id + "";
     } // end of toString
 
+    /**
+     * Checks if this vertex is equal to another object by comparing their unique identifiers.
+     *
+     * @param object The object to compare with this vertex.
+     * @return True if the objects are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object object) {
         if (object instanceof Vertex otherVertex) {
@@ -40,23 +75,4 @@ public class Vertex {
         }
         return false;
     } // end of equals
-
-    //----------------------------------------------< For Testing >-----------------------------------------------------
-    public void printEdges() {
-        System.out.print("LIST for (" + id + "): ");
-        for (Edge edge : adjacencyList) {
-            System.out.print(edge.getEnd() + " ");
-        }
-    }
-
-    public void displayEdges() {
-        System.out.println("\nList of all edges that node " + id + " has:");
-        System.out.println("===========================================");
-        for (Edge edge : adjacencyList) {
-            System.out.println("ID of Edge: " + edge.getId() +
-                    "\nID of the first node: " + edge.getStart().getId() +
-                    "\nID of the second node: " + edge.getEnd().getId());
-        }
-        System.out.println(adjacencyList);
-    } // end of displayEdges
 } // end of Vertex class

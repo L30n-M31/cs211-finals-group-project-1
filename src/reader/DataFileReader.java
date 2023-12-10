@@ -7,10 +7,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Utility class for reading data from a file.
+ */
 public class DataFileReader {
-
+    /**
+     * Constructs a new instance of DataFileReader
+     */
     public DataFileReader() { } // end of constructor
 
+    /**
+     * Reads the contents of a file and returns the data as a list of strings.
+     *
+     * @param filename The name of the file to be read.
+     * @return A list of strings representing the lines of the file.
+     */
     public List<String> readFile(String filename) {
         List<String> data = new ArrayList<>();
         Scanner reader = null;
